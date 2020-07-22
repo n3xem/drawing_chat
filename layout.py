@@ -1,21 +1,49 @@
 import PySimpleGUI as sg
+import server
+import threading
 
-sg.theme('Topanga')
+
+def create_server_func():
+    server.create_server()
+
+
+def create_draw_server_func():
+    server.create_draw_server()
+
 
 layout_main = [
-    [sg.Text('接続先'), sg.InputText()],
-    [sg.Submit(button_text='サーバーに接続')],
-    [sg.Submit(button_text='サーバーを作成')]
+    [sg.Submit(button_text='サーバーを作成', key='-CreateServer-')]
 ]
 
-window = sg.Window('お絵描きチャット', layout_main)
+layout_chatroom = [
+    [sg.Text('サーバーを建てました', key='-ConnectWait-')],
+    [sg.Output(size=(80, 20), key='-Draw-')]
+]
 
-def mainWindow():
+
+def main_window():
+
+    wait = False
+    sg.theme('Topanga')
+    window = sg.Window('お絵描きチャット', layout_main)
+
+    thread1 = threading.Thread(target=create_server_func, daemon=True)
+    thread2 = threading.Thread(target=create_draw_server_func, daemon=True)
     while True:
         event, values = window.read()
-        print(event, values)
-        if event == sg.WIN_CLOSED or event == 'Exit':
+        #print(event, values)
+        if event in (None, 'Quit'):
             break
 
-    window.close()
+        elif event == '-CreateServer-':
+            print('createserver')
+            window.close()
+            window = sg.Window('チャットルーム', layout_chatroom)
+            thread1.start()
+            thread2.start()
+            wait = True
 
+        elif wait == True:
+            wait = False
+
+    window.close()
