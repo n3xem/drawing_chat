@@ -11,6 +11,6 @@ $ pip install PySimpleGUI
 $ python main.py
 
 クライアントは
-$ python server.py
+$ python client.py
 
 で実行できる。
