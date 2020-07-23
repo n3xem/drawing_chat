@@ -1,16 +1,20 @@
 # drawing_chat
-推奨動作環境 Python3.8.2
 
-まず
+# Requirement
+* Python3.8.2
 
+# Instllation
+```bash
 $ pip install PySimpleGUI
+```
 
-で外部モジュールをインストール
-
-サーバーは
+# Usage Server
+```
 $ python main.py
+```
 
-クライアントは
+# Usage Client
+(サーバーが起動しているときのみ)
+```
 $ python client.py
-
-で実行できる。
+```
