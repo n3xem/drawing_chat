@@ -1,9 +1,10 @@
 # drawing_chat
+![GIFアニメ](https://raw.githubusercontent.com/wiki/n3xem/drawing_chat/images/drawing_chat.gif)    
 大学の講義の課題として、お絵描きを同期して二人でお絵描きを楽しめるアプリケーションを作りました。PythonのPySimpleGUIというライブラリを用いて作成しています。  
 機能としては、  
 ・テキストチャット  
 ・お絵描き（色指定可、消しゴムあり）  
-・名前の変更  
+・チャット時に付与される名前の変更
 ・サーバー側にチャットログが流れる  
 があります。  
 
